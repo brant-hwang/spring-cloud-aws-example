@@ -24,6 +24,11 @@ Open IntelliJ Preference
 - Run main() on Application Class
 ```
 
+### API 
+```
+GET /api/aws/s3/list : S3 Bucket File List  
+GET /api/aws/s3/download?key={key} : S3 Object Download
+POST /api/aws/s3/upload : Upload To S3
 
 ### Environment
 - Java 8
