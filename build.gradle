@@ -1,0 +1,48 @@
+group 'com.axisj.boot.cloud.aws'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://repo.spring.io/release" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.M2")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'spring-boot'
+apply plugin: "io.spring.dependency-management"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+project.ext {
+    springBootVersion = '1.3.0.M2'
+    springCloudVersion = '1.0.2.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/release" }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-freemarker")
+    compile("org.springframework.cloud:spring-cloud-aws-context:${springCloudVersion}")
+    compile("commons-io:commons-io:2.4")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
