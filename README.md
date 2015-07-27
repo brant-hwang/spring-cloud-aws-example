@@ -24,6 +24,12 @@ Open IntelliJ Preference
 - Run main() on Application Class
 ```
 
+### API 
+```
+GET /api/aws/s3/list : List of Objects
+GET /api/aws/s3/download?key={key} : Download
+POST /api/aws/s3/upload : Upload
+```
 
 ### Environment
 - Java 8
