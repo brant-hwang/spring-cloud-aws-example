@@ -38,6 +38,8 @@ public class S3Wrapper {
 	private PutObjectResult upload(InputStream inputStream, String uploadKey) {
 		PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, uploadKey, inputStream, new ObjectMetadata());
 
+		putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+
 		PutObjectResult putObjectResult = amazonS3Client.putObject(putObjectRequest);
 
 		IOUtils.closeQuietly(inputStream);
