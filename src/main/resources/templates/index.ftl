@@ -6,10 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-	<link rel="stylesheet" type="text/css" href="http://cdn.axisj.com/axicon/axicon.min.css">
-	<link rel="stylesheet" type="text/css" href="http://cdn.axisj.com/axisj/ui/kakao/AXJ.min.css" />
-	<script type="text/javascript" src="http://cdn.axisj.com/axisj/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="http://cdn.axisj.com/axisj/dist/AXJ.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://axicon.axisj.com/axicon/axicon.css">
+	<link rel="stylesheet" type="text/css" href="http://dev.axisj.com/ui/kakao/AXJ.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://dev.axisj.com/dist/AXJ.min.js"></script>
 	<style>
 		html, body{
 			margin:0px; padding:0px;
@@ -32,57 +32,57 @@
 </head>
 <body>
 
-	<table cellpadding="0" cellspacing="0" style="height:100%;width:100%;">
-		<tr>
-			<td valign="top">
-				<div class="block">
-					<h1>
-						<i class="axi axi-file"></i> Uploaded list
-					</h1>
-					<div id="uploaded-list"></div>
+<table cellpadding="0" cellspacing="0" style="height:100%;width:100%;">
+	<tr>
+		<td valign="top">
+			<div class="block">
+				<h1>
+					<i class="axi axi-file"></i> Uploaded list
+				</h1>
+				<div id="uploaded-list"></div>
+			</div>
+		</td>
+		<td valign="top" width="30%" style="border-left: 2px solid #d8d8d8;">
+			<div class="block">
+				<h1>
+					<i class="axi axi-ion-gear-b"></i> File infomation
+				</h1>
+				<div id="file-view">
+
 				</div>
-			</td>
-			<td valign="top" width="30%" style="border-left: 2px solid #d8d8d8;">
-				<div class="block">
-					<h1>
-						<i class="axi axi-ion-gear-b"></i> File infomation
-					</h1>
-					<div id="file-view">
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2" height="250" style="border-top: 2px solid #d8d8d8;background: #eee;">
+			<div class="block">
 
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" colspan="2" height="250" style="border-top: 2px solid #d8d8d8;background: #eee;">
-				<div class="block">
+				<div class="AXUpload5" id="AXUpload5"></div>
 
-					<div class="AXUpload5" id="AXUpload5"></div>
+				<div style="height:10px;"></div>
 
-					<div style="height:10px;"></div>
+				<div id="uploadQueueBox" class="AXUpload5QueueBox_list" style="height:188px;"></div>
 
-					<div id="uploadQueueBox" class="AXUpload5QueueBox_list" style="height:188px;"></div>
+				<!--
+				<form action="/api/aws/s3/upload" enctype="multipart/form-data" method="POST">
+					<input type="file" name="file"/>
+					<input type="file" name="file"/>
+					<input type="file" name="file"/>
+					<input type="file" name="file"/>
+					<input type="file" name="file"/>
+					<input type="submit" value="Submit"/>
+				</form>
+				-->
+			</div>
 
-					<!--
-					<form action="/api/aws/s3/upload" enctype="multipart/form-data" method="POST">
-						<input type="file" name="file"/>
-						<input type="file" name="file"/>
-						<input type="file" name="file"/>
-						<input type="file" name="file"/>
-						<input type="file" name="file"/>
-						<input type="submit" value="Submit"/>
-					</form>
-					-->
-				</div>
-
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" colspan="2" height="30" style="border-top: 2px solid #d8d8d8;background: #000;line-height: 28px;color:#fff;text-align: center;">
-				Opensource javascript UI Library AXISJ - <a href="https://github.com/axisj/axisj" style="color: #fff;">https://github.com/axisj/axisj</a>
-			</td>
-		</tr>
-	</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2" height="30" style="border-top: 2px solid #d8d8d8;background: #000;line-height: 28px;color:#fff;text-align: center;">
+			Opensource javascript UI Library AXISJ - <a href="https://github.com/axisj/axisj" style="color: #fff;">https://github.com/axisj/axisj</a>
+		</td>
+	</tr>
+</table>
 
 <script type="text/javascript">
 	var fnObj = {
@@ -133,16 +133,16 @@
 			},
 			query: function(){
 				$.ajax({
-					url: "/api/aws/s3/list",
-					beforeSend: function( xhr ) {
-						//xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
-					}
-				})
-				.done(function( data ) {
+							url: "/api/aws/s3/list",
+							beforeSend: function( xhr ) {
+								//xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+							}
+						})
+						.done(function( data ) {
 
-					fnObj.grid.target.setList(data);
+							fnObj.grid.target.setList(data);
 
-				});
+						});
 			}
 		},
 		view: {
